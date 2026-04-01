@@ -1,0 +1,90 @@
+[
+  {
+    "engine": "postgres-hnsw",
+    "engine_name": "PostgreSQL (pgvector + HNSW)",
+    "dim": 1536,
+    "res": {
+      "ping_time": 0.07367134094238281,
+      "insert_time": 1177.401065826416,
+      "index_time": 291.3858890533447,
+      "search_time": 3.267526626586914
+    }
+  },
+  {
+    "engine": "postgres-hnsw",
+    "engine_name": "PostgreSQL (pgvector + HNSW)",
+    "dim": 384,
+    "res": {
+      "ping_time": 0.12922286987304688,
+      "insert_time": 289.77203369140625,
+      "index_time": 99.15804862976074,
+      "search_time": 0.8878707885742188
+    }
+  },
+  {
+    "engine": "postgres-ivfflat",
+    "engine_name": "PostgreSQL (pgvector + IVFFlat)",
+    "dim": 1536,
+    "res": {
+      "ping_time": 0.09918212890625,
+      "insert_time": 1184.0970516204834,
+      "index_time": 33.10346603393555,
+      "search_time": 1.9810199737548828
+    }
+  },
+  {
+    "engine": "postgres-ivfflat",
+    "engine_name": "PostgreSQL (pgvector + IVFFlat)",
+    "dim": 384,
+    "res": {
+      "ping_time": 0.03910064697265625,
+      "insert_time": 293.86377334594727,
+      "index_time": 7.501363754272461,
+      "search_time": 0.8311271667480469
+    }
+  },
+  {
+    "engine": "surrealdb",
+    "engine_name": "SurrealDB (M-Tree)",
+    "dim": 1536,
+    "res": {
+      "ping_time": 72.20268249511719,
+      "insert_time": 666.0976409912109,
+      "index_time": 65.49859046936035,
+      "search_time": 69.33069229125977
+    }
+  },
+  {
+    "engine": "surrealdb",
+    "engine_name": "SurrealDB (M-Tree)",
+    "dim": 384,
+    "res": {
+      "ping_time": 65.9785270690918,
+      "insert_time": 560.495138168335,
+      "index_time": 68.98331642150879,
+      "search_time": 67.80838966369629
+    }
+  },
+  {
+    "engine": "qdrant",
+    "engine_name": "Qdrant (HNSW)",
+    "dim": 1536,
+    "res": {
+      "ping_time": 2.789735794067383,
+      "insert_time": 427.46806144714355,
+      "index_time": 0.0,
+      "search_time": 2.9604434967041016
+    }
+  },
+  {
+    "engine": "qdrant",
+    "engine_name": "Qdrant (HNSW)",
+    "dim": 384,
+    "res": {
+      "ping_time": 2.2554397583007812,
+      "insert_time": 111.50789260864258,
+      "index_time": 0.0,
+      "search_time": 1.4154911041259766
+    }
+  }
+]

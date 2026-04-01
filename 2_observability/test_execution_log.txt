@@ -1,0 +1,43 @@
+========================================================================
+PRODUCTION READINESS TEST SUITE - MODULE 2 (AI OBSERVABILITY)
+========================================================================
+
+Timestamp: 2026-03-31 23:41:59 UTC
+
+[TEST] API Reachability (/openapi.json)
+--------------------------------------------------
+<-- Response Status: 200
+<-- Response Body: {"openapi": "3.1.0", "info": {"title": "AI Observability & Monitoring", "version": "0.1.0"}, "paths": {"/generate": {"post": {"summary": "Mock LLM Generation with Telemetry", "description": "Simulates an LLM call. The heavy lifting of observability is handled by tracking the latency\nand token usage, calculating the exact cost, and asynchronously persisting it to PostgreSQL.", "operationId": "generate_text_generate_post", "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/PromptRequest"}}}, "required": true}, "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/GenerationResponse"}}}}, "422": {"description": "Validation Error", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HTTPValidationError"}}}}}}}, "/metrics": {"get": {"summary": "Get Business Intelligence Metrics", "description": "Fetches the aggregated analytics directly from the PostgreSQL View.", "operationId": "get_metrics_metrics_get", "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {}}}}}}}}, "components": {"schemas": {"GenerationResponse": {"properties": {"response": {"type": "string", "title": "Response"}, "usage": {"type": "object", "title": "Usage"}}, "type": "object", "required": ["response", "usage"], "title": "GenerationResponse"}, "HTTPValidationError": {"properties": {"detail": {"items": {"$ref": "#/components/schemas/ValidationError"}, "type": "array", "title": "Detail"}}, "type": "object", "title": "HTTPValidationError"}, "PromptRequest": {"properties": {"model": {"type": "string", "title": "Model"}, "prompt": {"type": "string", "title": "Prompt"}}, "type": "object", "required": ["model", "prompt"], "title": "PromptRequest"}, "ValidationError": {"properties": {"loc": {"items": {"anyOf": [{"type": "string"}, {"type": "integer"}]}, "type": "array", "title": "Location"}, "msg": {"type": "string", "title": "Message"}, "type": {"type": "string", "title": "Error Type"}}, "type": "object", "required": ["loc", "msg", "type"], "title": "ValidationError"}}}}
+✅ PASSED: Status check successful.
+
+
+[TEST] Simulate LLM Call (gpt-3.5-turbo)
+--------------------------------------------------
+--> Payload: {"model": "gpt-3.5-turbo", "prompt": "Explain observability in software engineering."}
+<-- Response Status: 200
+<-- Response Body: {"response": "This is a simulated response from gpt-3.5-turbo.", "usage": {"prompt_tokens": 6, "completion_tokens": 50, "total_cost": 7.800000000000001e-05, "latency_ms": 501.171350479126}}
+✅ PASSED: Cost calculated successfully: $0.000078
+
+
+[TEST] Simulate LLM Call (gpt-4-turbo)
+--------------------------------------------------
+--> Payload: {"model": "gpt-4-turbo", "prompt": "Write a complex SQL view for tracking metrics."}
+<-- Response Status: 200
+<-- Response Body: {"response": "This is a simulated response from gpt-4-turbo.", "usage": {"prompt_tokens": 10, "completion_tokens": 50, "total_cost": 0.0015999999999999999, "latency_ms": 1200.3812789916992}}
+✅ PASSED: Cost calculated successfully: $0.001600
+
+
+[TEST] Retrieve Business Intelligence Metrics (SQL View)
+--------------------------------------------------
+<-- Response Status: 200
+<-- Response Body: [{"model_name": "gpt-4-turbo", "total_requests": 1, "avg_latency_ms": 1200.3812789916992, "total_spend": 0.0015999999999999999, "cost_per_1k_requests": 1.5999999999999999}, {"model_name": "gpt-3.5-turbo", "total_requests": 1, "avg_latency_ms": 501.171350479126, "total_spend": 7.800000000000001e-05, "cost_per_1k_requests": 0.07800000000000001}]
+✅ PASSED: SQL View correctly aggregated latency and cost metrics.
+
+
+========================================================================
+TEST SUITE EXECUTION COMPLETED
+========================================================================
+
+RESULT: ALL TESTS PASSED.
+VERIFICATION: Telemetry successfully recorded and aggregated in PostgreSQL.
+STATUS: PRODUCTION READY. Module 2 is verified and safe for implementation.

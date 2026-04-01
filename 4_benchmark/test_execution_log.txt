@@ -1,0 +1,66 @@
+Starting Vector DB Benchmark Suite...
+========================================
+Testing postgres-hnsw...
+========================================
+Waiting for portfolio_pg_benchmark to initialize...
+Completed PostgreSQL (pgvector + HNSW) for 1536d
+Completed PostgreSQL (pgvector + HNSW) for 384d
+Going to remove portfolio_pg_benchmark
+
+========================================
+Testing postgres-ivfflat...
+========================================
+Waiting for portfolio_pg_benchmark to initialize...
+Completed PostgreSQL (pgvector + IVFFlat) for 1536d
+Completed PostgreSQL (pgvector + IVFFlat) for 384d
+Going to remove portfolio_pg_benchmark
+
+========================================
+Testing surrealdb...
+========================================
+Waiting for portfolio_surreal_benchmark to initialize...
+Completed SurrealDB (M-Tree) for 1536d
+Completed SurrealDB (M-Tree) for 384d
+Going to remove portfolio_surreal_benchmark
+
+========================================
+Testing qdrant...
+========================================
+Waiting for portfolio_qdrant_benchmark to initialize...
+Completed Qdrant (HNSW) for 1536d
+Completed Qdrant (HNSW) for 384d
+Going to remove portfolio_qdrant_benchmark
+
+FINAL AGGREGATED REPORT
+
+========================================================================
+VECTOR ENGINE BENCHMARK RESULTS (1536 Dimensions, 500 Vectors)
+========================================================================
++---------------------------------+----------------+---------------+--------------------+----------------------+
+| Engine                          | Ping Latency   | Insert Time   | Index Build Time   | KNN Search Latency   |
++=================================+================+===============+====================+======================+
+| PostgreSQL (pgvector + HNSW)    | 0.23 ms        | 3465.20 ms    | 290.93 ms          | 9.88 ms              |
++---------------------------------+----------------+---------------+--------------------+----------------------+
+| PostgreSQL (pgvector + IVFFlat) | 0.25 ms        | 3377.21 ms    | 143.07 ms          | 4.87 ms              |
++---------------------------------+----------------+---------------+--------------------+----------------------+
+| SurrealDB (M-Tree)              | 327.16 ms      | 1241.74 ms    | 167.94 ms          | 109.56 ms            |
++---------------------------------+----------------+---------------+--------------------+----------------------+
+| Qdrant (HNSW)                   | 232.05 ms      | 1484.57 ms    | 0.00 ms            | 64.85 ms             |
++---------------------------------+----------------+---------------+--------------------+----------------------+
+
+========================================================================
+VECTOR ENGINE BENCHMARK RESULTS (384 Dimensions, 500 Vectors)
+========================================================================
++---------------------------------+----------------+---------------+--------------------+----------------------+
+| Engine                          | Ping Latency   | Insert Time   | Index Build Time   | KNN Search Latency   |
++=================================+================+===============+====================+======================+
+| PostgreSQL (pgvector + HNSW)    | 0.24 ms        | 761.02 ms     | 140.38 ms          | 2.79 ms              |
++---------------------------------+----------------+---------------+--------------------+----------------------+
+| PostgreSQL (pgvector + IVFFlat) | 0.23 ms        | 836.41 ms     | 28.15 ms           | 2.06 ms              |
++---------------------------------+----------------+---------------+--------------------+----------------------+
+| SurrealDB (M-Tree)              | 68.28 ms       | 702.26 ms     | 57.87 ms           | 61.77 ms             |
++---------------------------------+----------------+---------------+--------------------+----------------------+
+| Qdrant (HNSW)                   | 30.13 ms       | 294.52 ms     | 0.00 ms            | 3.14 ms              |
++---------------------------------+----------------+---------------+--------------------+----------------------+
+
+STATUS: PRODUCTION READY. Module 4 benchmarking completed successfully.

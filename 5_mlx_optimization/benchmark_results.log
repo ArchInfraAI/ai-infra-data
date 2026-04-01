@@ -1,0 +1,20 @@
+--- STARTING REAL-TIME BENCHMARK SESSION: Wed Apr  1 00:53:54 PDT 2026 ---
+Architecture: arm64
+
+--- TEST 1: OLLAMA (GGUF) ---
+total duration:       10.443780458s
+load duration:        96.968916ms
+prompt eval count:    57 token(s)
+prompt eval rate:     329.45 tokens/s
+eval count:           921 token(s)
+eval rate:            93.78 tokens/s
+
+--- TEST 2: MLX NATIVE (MLX-FORMAT) ---
+--- MLX Professional Profiling (Llama 3.2 1B) ---
+eval count:           785 tokens
+eval rate:            182.41 tokens/s
+total duration:       4.304s
+Peak Memory:          663.04 MB
+--------------------------------------------------
+
+--- BENCHMARK SESSION COMPLETED ---

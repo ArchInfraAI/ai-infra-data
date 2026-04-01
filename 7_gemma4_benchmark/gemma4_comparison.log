@@ -1,0 +1,25 @@
+--- STARTING PARITY BENCHMARK SESSION: Thu Apr  2 16:52:54 PDT 2026 ---
+Platform: Apple Silicon M1 Pro (16GB Unified Memory)
+Quantization Parity: Both models are 3-bit (Q3_K_M / IQ3_S)
+
+--- GEMMA 4 E4B (DENSE 3-BIT) ---
+Runtime Memory State:
+NAME                            ID              SIZE      PROCESSOR    CONTEXT    UNTIL              
+gemma-4-e4b-it-Q3_K_M:latest    f7ee1a47573c    4.7 GB    100% GPU     4096       4 minutes from now    
+total duration:       1m43.508149958s
+prompt eval count:    30 token(s)
+prompt eval rate:     177.45 tokens/s
+eval count:           2420 token(s)
+eval rate:            23.64 tokens/s
+
+--- GEMMA 4 26B-A4B (MOE 3-BIT) ---
+Runtime Memory State:
+NAME                                  ID              SIZE     PROCESSOR         CONTEXT    UNTIL              
+gemma-4-26B-A4B-it-UD-IQ3_S:latest    62ca94f23ff4    12 GB    9%/91% CPU/GPU    4096       4 minutes from now    
+total duration:       1m40.304396333s
+prompt eval count:    30 token(s)
+prompt eval rate:     24.15 tokens/s
+eval count:           2226 token(s)
+eval rate:            22.93 tokens/s
+
+--- BENCHMARK SESSION COMPLETED ---

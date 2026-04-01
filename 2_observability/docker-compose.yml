@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  portfolio_db:
+    image: postgres:17
+    container_name: portfolio_pg_observability
+    environment:
+      POSTGRES_DB: portfolio_vault
+      POSTGRES_USER: ai_admin
+      POSTGRES_PASSWORD: dummy_password_for_local_test
+    ports:
+      - "5432:5432"
+    volumes:
+      - observability_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ai_admin -d portfolio_vault"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  portfolio_api:
+    build: .
+    container_name: portfolio_api_observability
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_URL=postgresql://ai_admin:dummy_password_for_local_test@portfolio_db:5432/portfolio_vault
+    depends_on:
+      portfolio_db:
+        condition: service_healthy
+
+volumes:
+  observability_db_data:
